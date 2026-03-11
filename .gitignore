@@ -1,3 +1,7 @@
+# Files
+ITENS_PROVA_2023.csv
+MICRODADOS_ENEM_2023.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

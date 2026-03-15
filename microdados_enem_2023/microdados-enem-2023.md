@@ -29,7 +29,7 @@
 | --------------------- | ---------------------------------------- | ------------------------------------------------- | ----------- | ------------ |
 | CO_MUNICIPIO_ESC      | código do município da escola<br>1º dígito: Região<br>1º e 2º dígitos: UF<br>3º, 4º, 5º e 6º dígitos: Município<br>7º dígito: dígito verificador | 0000000  | 7           | Numérica |
 | NO_MUNICIPIO_ESC      | Nome do município da escola              | Nome Municipio	                               | 150	     | Alfanumérica |
-| CO_UF_ESC	        | Código da Unidade da Federação da escola | 00         	                               | 2	     | Numérica     |
+| CO_UF_ESC	            | Código da Unidade da Federação da escola | 00         	                               | 2	     | Numérica     |
 | SG_UF_ESC             | Sigla da Unidade da Federação da escola  | 00			                               | 2           | Alfanumérica |
 | TP_DEPENDENCIA_ADM_ESC| Dependência administrativa (Escola)      | 1 - Federal<br><br>2 - Estadual<br>3 - Municipal<br>4 - Privada | 1           | Numérica     |
 | TP_LOCALIZACAO_ESC    | Localização (Escola)                     | 1 - Urbana<br>2 - Rural                           | 1           | Numérica     |

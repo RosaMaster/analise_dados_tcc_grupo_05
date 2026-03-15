@@ -22,7 +22,7 @@ Os microdados do ENEM são o menor nível de desagregação de dados recolhidos 
 
 Link fonte: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
 
-[**+ INFO**](./microdados_enem_2023/microdados_enem_2023.md)
+[**+ INFO**](/microdados_enem_2023/microdados-enem-2023.md)
 
 ### MICRODADOS DO ENADE 2023
 

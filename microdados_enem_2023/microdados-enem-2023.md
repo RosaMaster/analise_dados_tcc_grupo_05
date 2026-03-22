@@ -7,7 +7,7 @@
 | __NOME DA VARIÁVEL__ | __Descrição__       | __Variáveis Categóricas (Categoria - Descrição)__ | __Tamanho__ | __Tipo__ |
 | -------------------- | ------------------- | ------------------------------------------------- | ----------- | -------- |
 | NU_INSCRICAO         | Número de inscrição | 000000000000			                 | 12	       | Numérica |
-| NU_ANO	       | Ano do Enem         | 2023                                              | 4	       | Numérica |
+| NU_ANO	           | Ano do Enem         | 2023                                              | 4	       | Numérica |
 | TP_FAIXA_ETARIA      | Faixa etária²       | 1 -	Menor de 17 anos<br>2 - 17 anos<br>3 - 18 anos<br>4 - 19 anos<br>5 - 20 anos<br>6 - 21 anos<br>7 - 22 anos<br>8 -23 anos<br>9 - 24 anos<br>10 - 25 anos<br>11 - Entre 26 e 30 anos<br>12 - Entre 31 e 35 anos<br>13 - Entre 36 e 40 anos<br>14 - Entre 41 e 45 anos<br>15 - Entre 46 e 50 anos<br>16 - Entre 51 e 55 anos<br>17 - Entre 56 e 60 anos<br>18 - Entre 61 e 65 anos<br>19 - Entre 66 e 70 anos<br>20 - Maior de 70 anos<br> | 2	       | Numérica |       
 | TP_SEXO              | Sexo                | M - Masculino<br>F - Feminino                     | 1	       | Alfanumérica |
 | TP_ESTADO_CIVIL      | Estado Civil	     | 0 - Não informado<br>1 - Solteiro(a)<br>2 - Casado(a)/Mora com companheiro(a)<br>3 - Divorciado(a)/Desquitado(a)/Separado(a)<br>4 - Viúvo(a) | 1	       | Numérica     |

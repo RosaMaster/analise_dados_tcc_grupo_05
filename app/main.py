@@ -24,10 +24,11 @@ def main():
         print(f"Arquivo CSV não encontrado: {dict_data_file['caminho_arquivo_origem']}")
         return
 
-    # Extrai e processa os dados
-    dados_extraidos = LeituraDados.read_dados_origem(dict_data_file["caminho_arquivo_origem"], encoding=dict_data_file["encoding"])
+    # Leitura dos dados usando biblioteca Polars
+    dados_extraidos = LeituraDados.read_polars(dict_data_file["caminho_arquivo_origem"], encoding=dict_data_file["encoding"])
 
-    # print(type(dados_extraidos))
+    print(type(dados_extraidos))
+
     # # Count the number of rows in the Dask DataFrame
     # num_rows = dados_extraidos.shape[0].compute()
     # print(f"Número de linhas no DataFrame: {num_rows}")
@@ -37,7 +38,6 @@ def main():
     # print(dados_extraidos.columns.tolist())
 
     # print(dados_extraidos.head())  # Exibe as primeiras linhas do DataFrame para verificar os dados
-    print(dados_extraidos.head())
     
     
     # ddf = dados_extraidos.extrair_e_processar_dados()

@@ -1,4 +1,5 @@
 import dask.dataframe as dd
+import polars as pl
 
 class LeituraDados:
     
@@ -11,5 +12,18 @@ class LeituraDados:
         """
         
         dataframe = dd.read_csv(csv_path, encoding=encoding, sep=";", assume_missing=True)
+
+        return dataframe
+
+    
+    @staticmethod
+    def read_polars(csv_path, encoding):
+        """Função para ler os dados de um arquivo CSV usando Polars.
+
+        Returns:
+            _type_: Retorna um DataFrame _pl.DataFrame_ do Polars com os dados lidos do arquivo CSV.
+        """
+        
+        dataframe = pl.read_csv(csv_path, encoding=encoding, separator=";")
 
         return dataframe

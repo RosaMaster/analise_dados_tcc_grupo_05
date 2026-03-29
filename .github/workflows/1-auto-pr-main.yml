@@ -1,0 +1,30 @@
+name: Auto Create PR to Main
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Verifica se já existe um PR aberto da develop para main
+          PR_EXISTS=$(gh pr list --base main --head develop --state open --json number -q '.[0].number')
+          
+          if [ -z "$PR_EXISTS" ]; then
+            gh pr create \
+              --base main \
+              --head develop \
+              --title "🚀 Release: Merge develop into main" \
+              --body "Este PR foi gerado automaticamente após um push na branch develop. Por favor, revise as alterações antes do merge final."
+          else
+            echo "Já existe um PR aberto (#$PR_EXISTS). Pulando a criação."
+          fi

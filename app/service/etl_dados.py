@@ -1,31 +1,24 @@
 import polars as pl
+from pathlib import Path
 
-class EtlDados:
-    
-    # @staticmethod
-    # def read_polars(csv_path, encoding):
-    #     """Função para ler os dados de um arquivo CSV usando Polars.
 
-    #     Returns:
-    #         _type_: Retorna um DataFrame _pl.DataFrame_ do Polars com os dados lidos do arquivo CSV.
-    #     """
-        
-    #     dataframe = pl.read_csv(csv_path, encoding=encoding, separator=";")
-
-    #     return dataframe
-    
+class ExtracTransformLoadData:
 
     @staticmethod
-    def save_parquet(dados_origem, dados_destino, lista_colunas, encoding):
-        """_summary_
+    def csv_to_parquet(dados_origem: str, dados_destino: str, lista_colunas: list, encoding: str) -> pl.DataFrame:
+        """ Extrai dados de um arquivo CSV, seleciona colunas específicas, filtra os dados e salva em formato Parquet.
 
         Args:
-            dados_origem (_type_): _description_
-            dados_destino (_type_): _description_
-            lista_colunas (_type_): _description_
+            dados_origem (str): Caminho para o arquivo CSV de origem
+            dados_destino (str): Caminho para o arquivo Parquet de destino
+            lista_colunas (list): Lista de nomes de colunas a serem selecionadas
+            encoding (str): Codificação do arquivo CSV
         """
 
         try:
+            path_destino = Path(dados_destino)                                  # Criar o objeto Path para o destino
+            path_destino.parent.mkdir(parents=True, exist_ok=True)              # Criar diretórios pai, se necessário
+
             (
                 pl.scan_csv(dados_origem, encoding=encoding, separator=",")
                     .select(lista_colunas)
@@ -33,8 +26,9 @@ class EtlDados:
                     .sink_parquet(dados_destino) 
             )
 
-            # retornar amostra de 5 linhas do DataFrame para verificar os dados
-            return pl.read_parquet(dados_destino).head(5)
+            print(f"✅ Arquivo salvo com sucesso em: {dados_destino}")
+            
+            return pl.read_parquet(dados_destino).head(5)                       # Retornar amostra de 5 linhas do DataFrame para verificar os dados
 
         except Exception as e:
-            print(f"Erro ao processar: {e}")
+            print(f"❌ Erro ao processar: {e}")

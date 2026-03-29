@@ -12,15 +12,14 @@ Repositório para armazenamento de dados e analise de dados do TCC Científico d
 >> FOMARTO: **`csv`** -> **`parquet`** -> **`view`**
 >
 >> BIBLIOTECAS (LIB's)
->>> LEITURA (EXTRACT): [**`Polars`**](https://pola.rs/)
->>
->>> TRANFORMAÇÃO (TRANSFORM): 
->>
->>> CARREGAMENTO (LOAD): 
+>>> LEITURA (EXTRACT) | TRANFORMAÇÃO (TRANSFORM) | CARREGAMENTO (LOAD): [**`Polars`**](https://pola.rs/)
+>>> OUTRO: [pathlib](https://docs.python.org/3/library/pathlib.html)
 
 <br><br>
 
 ### LIB's Python
+
+#### ETL
 
 | __Bibliotecas__                                                       | __Descrição__                                                                                                                                                                                                                                |
 | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -57,6 +56,12 @@ Para o seu cenário específico (2 GB, foco em limpeza e posterior criação de 
 - Parquet Nativo: Ele foi construído sobre a tecnologia Apache Arrow, que é o "idioma nativo" do formato Parquet. A conversão é quase instantânea.
 
 OBS: Utilizando no projeto, use o termo "Lazy Evaluation" e "Memory Efficient Processing". Explicar que você escolheu uma ferramenta que não sobrecarrega a memória RAM (como o Polars ou DuckDB) demonstra uma maturidade técnica de Engenharia de Dados muito maior do que apenas "fazer o código funcionar".
+
+#### OUTRAS LIBs
+
+| __Bibliotecas__                                           | __Descrição__                                                                                                                                                                                    |
+| --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [pathlib](https://docs.python.org/3/library/pathlib.html) | Caminhos do sistema de arquivos orientados a objetos, este módulo oferece classes que representam caminhos de sistema de arquivos com semântica apropriada para diferentes sistemas operacionais |
 
 <br>
 

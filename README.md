@@ -6,42 +6,6 @@
 
 Repositório para armazenamento de dados e analise de dados do TCC Científico do __BCD - TCC530 - A2026S1N3 - GRUPO 5__.
 
-| __Bibliotecas__                                                       | __Descrição__                                                                                                                                                      |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Dask](https://docs.dask.org/en/stable/)                              | Dask é uma biblioteca Python para computação paralela e distribuída                                                                                                |
-| [DuckDB](https://duckdb.org/docs/stable/)                             | É um banco de dados analítico que roda "dentro" do seu script Python. Ele é fenomenal para ler CSVs gigantes e já salvar em Parquet usando SQL ou comandos simples. Ele não carrega tudo na RAM de uma vez (streaming) |
-| [Modin](https://modin.readthedocs.io/en/stable/)                      | Uma biblioteca que atua como um "acelerador" do Pandas. Você muda apenas uma linha de código (import modin.pandas as pd) e ele distribui o processamento em todos os núcleos do seu processador automaticamente usando Ray ou Dask por baixo |
-| [Panda](https://pandas.pydata.org/docs/)                              | Pandas é uma biblioteca de código aberto, licenciada sob a licença BSD, que fornece estruturas de dados de alto desempenho e ferramentas de análise de dados fáceis de usar para a linguagem de programação Python |
-| [Polars](https://pola.rs/)                                            | Polars é uma biblioteca DataFrame extremamente rápida para manipulação de dados estruturados. O núcleo é escrito em Rust e está disponível para Python, R e NodeJS |
-| [PySpark](https://spark.apache.org/docs/latest/api/python/index.html) | PySpark é a API Python para Apache Spark. Ela permite realizar processamento de dados em larga escala e em tempo real em um ambiente distribuído usando Python. Também fornece um shell PySpark para análise interativa de dados |
-| [Vaex](https://vaex.io/docs/index.html)                               | Focada em "Lazy Out-of-core DataFrames". Ela é excelente se você precisar visualizar esses dados depois sem ocupar quase nada de memória, pois ela mapeia o arquivo no disco em vez de lê-lo. |
-
-#### Vantagens e Desvantagens
-
-| __Biblioteca__ | __Leitura(2 GB)__            | __Limpeza(Drop/Filter)__       | __Exportação Parquet__ | __Vantagem Principal__                             | __Desvantagem Principal__                             |
-| -------------- | ---------------------------- | ------------------------------ | ---------------------- | -------------------------------------------------- | ----------------------------------------------------- |
-| Dask           | Rápido (Paralelizado)        | Eficiente (Lazy)               | Bom                    | Escala para múltiplos computadores                 | Overhead de configuração para dados "pequenos"        |
-| DuckDB         | Instantâneo (Streaming)      | Muito Rápido (via SQL)         | Rápido                 | Pode processar dados maiores que a sua RAM         | Foco maior em SQL do que em manipulação funcional     |
-| Modin          | Rápida (Paralelizada)        | Boa (Igual ao Pandas)          | Boa                    | Acelera o Pandas sem mudar nenhuma linha de código | Depende de engines externas (Ray/Dask) para rodar     |
-| Pandas         | Muito Lento / Risco de Crash | Simples, mas consome muita RAM | Lento                  | Sintaxe universal e familiar                       | Péssimo gerenciamento de memória                      |
-| Polars         | Ultra Rápido                 | Extremamente Eficiente         | Excelente              | Escrito em Rust, usa 100% da CPU nativamente       | Sintaxe levemente diferente do Pandas                 |
-| PySpark        | Rápido                       | Robusto                        | Excelente              | Padrão ouro para Big Data (Petabytes)              | Exige Java e tem muito "peso" inicial                 |
-| Vaex           | Instantânea (Memory Mapping) | Muito Rápida                   | Boa                    | Permite visualizar bilhões de linhas sem latência  | Menos flexível para manipulações de strings complexas |
-
-#### Qual é a mais viável para o seu projeto?
-
-Para o seu cenário específico (2 GB, foco em limpeza e posterior criação de dashboards), a opção mais viável é o Polars.
-
-#### Por que o Polars?
-
-- Velocidade: Ele vai ler seus 2 GB em segundos, enquanto o Pandas pode levar minutos ou travar.
-
-- Simplicidade Local: Diferente do PySpark (que precisa de JVM/Java) ou Dask (que precisa gerenciar workers), o Polars é apenas um pip install polars.
-
-- Parquet Nativo: Ele foi construído sobre a tecnologia Apache Arrow, que é o "idioma nativo" do formato Parquet. A conversão é quase instantânea.
-
-OBS: Utilizando no projeto, use o termo "Lazy Evaluation" e "Memory Efficient Processing". Explicar que você escolheu uma ferramenta que não sobrecarrega a memória RAM (como o Polars ou DuckDB) demonstra uma maturidade técnica de Engenharia de Dados muito maior do que apenas "fazer o código funcionar".
-
 ### ÍNDICE
 
 1. [Microdados do ENEM 2023](#microdados-do-enem-2023)

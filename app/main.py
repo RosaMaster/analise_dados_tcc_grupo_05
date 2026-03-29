@@ -1,6 +1,6 @@
 import os
 import datetime
-from service.leitura_dados import LeituraDados
+from service.etl_dados import EtlDados
 from utils.dict_data_file import DicionarioDataFile
 
 
@@ -16,7 +16,9 @@ def main():
     print(dict_data_file["encoding"])
     print(dict_data_file["caminho_arquivo_origem"])
     print(dict_data_file["caminho_arquivo_destino"])
-    print(dict_data_file["fields_drop"])
+    print(dict_data_file["fields_select"])
+
+    print(type(dict_data_file["fields_select"]))
 
 
     # Verifica se o arquivo CSV existe
@@ -25,27 +27,9 @@ def main():
         return
 
     # Leitura dos dados usando biblioteca Polars
-    dados_extraidos = LeituraDados.read_polars(dict_data_file["caminho_arquivo_origem"], encoding=dict_data_file["encoding"])
+    dados_extraidos = EtlDados.save_parquet(dict_data_file["caminho_arquivo_origem"], dict_data_file["caminho_arquivo_destino"], dict_data_file["fields_select"], dict_data_file["encoding"])
 
-    print(type(dados_extraidos))
-
-    # # Count the number of rows in the Dask DataFrame
-    # num_rows = dados_extraidos.shape[0].compute()
-    # print(f"Número de linhas no DataFrame: {num_rows}")
-
-    # print schema para ver as colunas disponíveis
-    # print("Colunas do CSV:")
-    # print(dados_extraidos.columns.tolist())
-
-    # print(dados_extraidos.head())  # Exibe as primeiras linhas do DataFrame para verificar os dados
-    
-    
-    # ddf = dados_extraidos.extrair_e_processar_dados()
-
-    # # Converter para Parquet
-    # parquet_path = "data/teste1/microdados-enem-2023-sp.parquet"
-    # ddf.to_parquet(parquet_path, engine='pyarrow', write_index=False)
-    # print(f"Arquivo Parquet criado em: {parquet_path}")
+    print(dados_extraidos)
     
 
 if __name__ == "__main__":

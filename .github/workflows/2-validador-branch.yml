@@ -1,14 +1,22 @@
-name: Validador de Branch para permissão de Pull Request!
+name: Validador de Branch para Pull Request
+
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   check-branch:
     runs-on: ubuntu-latest
     steps:
       - name: Verify source branch
-        if: github.head_ref != 'develop'
         run: |
-          echo "ERROR: Pull Requests para a MAIN devem vir obrigatoriamente da DEVELOP."
-          exit 1
+          echo "Branch de origem: ${{ github.head_ref }}"
+          echo "Branch de destino: ${{ github.base_ref }}"
+          
+          if [[ "${{ github.head_ref }}" != "develop" ]]; then
+            echo "❌ ERRO: Pull Requests para a MAIN devem vir obrigatoriamente da DEVELOP."
+            exit 1
+          else
+            echo "✅ Origem validada: develop -> main."
+          fi

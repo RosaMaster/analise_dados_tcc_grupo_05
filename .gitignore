@@ -1,8 +1,8 @@
 # Files
 itens-prova-2023.csv
 microdados-enem-2023.csv
-victorscripts
 
+tx_rend_municipios*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

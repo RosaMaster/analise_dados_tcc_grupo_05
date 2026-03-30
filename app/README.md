@@ -81,3 +81,15 @@ Comparativo de Formatos para Armazenamento (Pós-Tratamento)
 
 OBS: O CSV e o JSON são formatos de texto "brutos", enquanto o Parquet é um formato binário colunar projetado especificamente para alta performance em Ciência de Dados. Salvar em Parquet transformará seu arquivo de 2 GB em algo muito menor (provavelmente cerca de 300 MB a 600 MB) e muito mais rápido de ler.
 
+
+### FONTES DE DADOS (DATA SOURCES)
+Os dados utilizados neste projeto são provenientes de bases oficiais e governamentais, garantindo a fidedignidade para a construção do modelo preditivo.
+
+INSTITUIÇÃO: INEP (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira)
+
+DATASET: Taxas de Rendimento Escolar (Aprovação, Reprovação e Abandono)
+
+ABRANGÊNCIA: Estado de São Paulo
+
+LINK PARA ACESSO: [Taxas de Rendimento Escolar - INEP](https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/indicadores-educacionais/taxas-de-rendimento-escolar)
+

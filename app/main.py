@@ -1,39 +1,44 @@
 import os
 from service.etl_dados import ExtracTransformLoadData
-from utils.dict_data_file import DicionarioDataFile
+from utils.dictionary_files import DicionarioDataFile
 
 
 def main():
     """Função principal para extrair, processar e salvar os dados."""
 
-    id = 1
+    lista_ids = [2]             # Lista de IDs para processar
 
     try:
-        dict_data_file = DicionarioDataFile.get_dict_data_file(id)
-        
-        print(dict_data_file["id"])
-        print(dict_data_file["base"])
-        print(dict_data_file["ano"])
-        print(dict_data_file["encoding"])
-        print(dict_data_file["caminho_arquivo_origem"])
-        print(dict_data_file["caminho_arquivo_destino"])
-        print(dict_data_file["fields_select"])
+        for id in lista_ids:
+            dict_data_file = DicionarioDataFile.get_dict_data_file(id)
+            
+            print(dict_data_file["id"])
+            print(dict_data_file["base"])
+            print(dict_data_file["ano"])
+            print(dict_data_file["encoding"])
+            print(dict_data_file["caminho_arquivo_origem"])
+            print(dict_data_file["caminho_arquivo_destino"])
+            print(dict_data_file["fields_select"])
+            print(dict_data_file["filters"])
 
-        print(type(dict_data_file["fields_select"]))
+            print(type(dict_data_file["filters"]))
 
+            # Validador de existência do arquivo de origem
+            if not os.path.exists(dict_data_file["caminho_arquivo_origem"]):
+                print(f"❌ Arquivo não encontrado: {dict_data_file['caminho_arquivo_origem']}. Verifique o caminho e tente novamente!")
+                return
+            
+            # ETL usando a lib polars
+            dados_extraidos = ExtracTransformLoadData.csv_to_parquet(dict_data_file["caminho_arquivo_origem"], dict_data_file["caminho_arquivo_destino"], dict_data_file["fields_select"], dict_data_file["filters"], dict_data_file["encoding"])
 
-        # Verifica se o arquivo CSV existe
-        if not os.path.exists(dict_data_file["caminho_arquivo_origem"]):
-            print(f"Arquivo CSV não encontrado: {dict_data_file['caminho_arquivo_origem']}")
-            return
+            print(dados_extraidos)
 
-        # Leitura dos dados usando biblioteca Polars
-        dados_extraidos = ExtracTransformLoadData.csv_to_parquet(dict_data_file["caminho_arquivo_origem"], dict_data_file["caminho_arquivo_destino"], dict_data_file["fields_select"], dict_data_file["encoding"])
+            print(f"✅ Processamento concluído para o ID: {id}. Base: {dict_data_file['base']}")
 
-        print(dados_extraidos)
+        print("✅ Todos os arquivos foram processados com sucesso!")
+
     except Exception as e:
         print(f"❌ Ocorreu um error: {e}")
     
-
 if __name__ == "__main__":
     main()

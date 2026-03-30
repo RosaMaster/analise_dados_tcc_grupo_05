@@ -5,7 +5,7 @@ from pathlib import Path
 class ExtracTransformLoadData:
 
     @staticmethod
-    def csv_to_parquet(dados_origem: str, dados_destino: str, lista_colunas: list, encoding: str) -> pl.DataFrame:
+    def csv_to_parquet(dados_origem: str, dados_destino: str, lista_colunas: list, filter: str, encoding: str) -> pl.DataFrame:
         """ Extrai dados de um arquivo CSV, seleciona colunas específicas, filtra os dados e salva em formato Parquet.
 
         Args:
@@ -22,8 +22,8 @@ class ExtracTransformLoadData:
             (
                 pl.scan_csv(dados_origem, encoding=encoding, separator=",")
                     .select(lista_colunas)
-                    #filter(pl.col("coluna_que_eu_quero_1").is_not_null())
-                    .sink_parquet(dados_destino) 
+                    .filter(pl.sql_expr(filter))
+                    .sink_parquet(dados_destino)
             )
 
             print(f"✅ Arquivo salvo com sucesso em: {dados_destino}")

@@ -1,6 +1,6 @@
 # TRABALHO DE CONCLUSÃO DE CURSO EM CIÊNCIA DE DADOS
 ### Grupo: BCD - TCC530 - A2026S1N3 - GRUPO 5
-#### Tema: MODELO PREDITIVO DE EVASÃO E DESEMPENHO ESCOLAR DO ESTADO DE SÃO PAULO
+#### Tema: Determinantes do Abandono Escolar e do Desempenho Acadêmico nos Municípios do Estado de São Paulo: uma Análise Exploratória e Preditiva com Dados Públicos (2019 - 2024)
 
 ---
 

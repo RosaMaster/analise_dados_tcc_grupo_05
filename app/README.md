@@ -55,8 +55,6 @@ Para o seu cenário específico (2 GB, foco em limpeza e posterior criação de 
 
 - Parquet Nativo: Ele foi construído sobre a tecnologia Apache Arrow, que é o "idioma nativo" do formato Parquet. A conversão é quase instantânea.
 
-OBS: Utilizando no projeto, use o termo "Lazy Evaluation" e "Memory Efficient Processing". Explicar que você escolheu uma ferramenta que não sobrecarrega a memória RAM (como o Polars ou DuckDB) demonstra uma maturidade técnica de Engenharia de Dados muito maior do que apenas "fazer o código funcionar".
-
 #### OUTRAS LIBs
 
 | __Bibliotecas__                                           | __Descrição__                                                                                                                                                                                    |

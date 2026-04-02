@@ -7,14 +7,14 @@ class DicionarioDataFile():
     def get_dict_data_file(id: int):
         """Função para retornar um dicionário com as informações das bases por id"""
 
-        return next((item for item in DicionarioDataFile.dict_data_file if item["id"] == id), None)
+        return DicionarioDataFile.dict_data_file.get(id)
     
 
     ######################################################
     ### Dicionário com as informações das bases por id ###
     ######################################################
-    dict_data_file = [
-        {
+    dict_data_file = {
+        1: {
             "id": 1, 
             "base": "Microdados do Enem 2024",
             "ano": 2024,
@@ -25,7 +25,7 @@ class DicionarioDataFile():
             "fields_select": ["NU_INSCRICAO", "NU_ANO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESCOLA", "CO_MUNICIPIO_PROVA", "NO_MUNICIPIO_PROVA", "SG_UF_PROVA"],
             "filters": "SG_UF_PROVA = \'SP\'"
         },
-        {
+        2: {
             "id": 2, 
             "base": "Microdados do Enem 2023",
             "ano": 2023,
@@ -36,7 +36,7 @@ class DicionarioDataFile():
             "fields_select": ["NU_INSCRICAO", "NU_ANO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESCOLA", "CO_MUNICIPIO_PROVA", "NO_MUNICIPIO_PROVA", "SG_UF_PROVA"],
             "filters": "SG_UF_PROVA = \'SP\'"
         },
-        {
+        3: {
             "id": 3, 
             "base": "Microdados do Enem 2022",
             "ano": 2022,
@@ -47,7 +47,7 @@ class DicionarioDataFile():
             "fields_select": ["NU_INSCRICAO", "NU_ANO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESCOLA", "CO_MUNICIPIO_PROVA", "NO_MUNICIPIO_PROVA", "SG_UF_PROVA"],
             "filters": "SG_UF_PROVA = \'SP\'"
         },
-        {
+        4: {
             "id": 4, 
             "base": "Microdados do Enem 2021",
             "ano": 2021,
@@ -58,7 +58,7 @@ class DicionarioDataFile():
             "fields_select": ["NU_INSCRICAO", "NU_ANO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESCOLA", "CO_MUNICIPIO_PROVA", "NO_MUNICIPIO_PROVA", "SG_UF_PROVA"],
             "filters": "SG_UF_PROVA = \'SP\'"
         },
-        {
+        5: {
             "id": 5, 
             "base": "Microdados do Enem 2020",
             "ano": 2020,
@@ -68,5 +68,16 @@ class DicionarioDataFile():
             "caminho_arquivo_destino": "data/microdados-enem-2020/microdados-enem-2020.parquet",
             "fields_select": ["NU_INSCRICAO", "NU_ANO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESCOLA", "CO_MUNICIPIO_PROVA", "NO_MUNICIPIO_PROVA", "SG_UF_PROVA"],
             "filters": "SG_UF_PROVA = \'SP\'"
+        },
+        6: {
+            "id": 6, 
+            "base": "Microdados do Enem 2019",
+            "ano": 2019,
+            "atualizacao": "NA",
+            "encoding": "utf8-lossy",
+            "caminho_arquivo_origem": "data/amostra_teste.csv",
+            "caminho_arquivo_destino": "data/microdados-enem-2019/microdados-enem-2019.parquet",
+            "fields_select": ["NU_INSCRICAO", "NU_ANO", "TP_FAIXA_ETARIA", "TP_SEXO", "TP_ESCOLA", "CO_MUNICIPIO_PROVA", "NO_MUNICIPIO_PROVA", "SG_UF_PROVA"],
+            "filters": "SG_UF_PROVA = \'SP\'"
         }
-    ]
+    }

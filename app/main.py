@@ -6,7 +6,7 @@ from utils.dictionary_files import DicionarioDataFile
 def main():
     """Função principal para extrair, processar e salvar os dados."""
 
-    lista_ids = [2]             # Lista de IDs para processar
+    lista_ids = [2]
 
     try:
         for id in lista_ids:

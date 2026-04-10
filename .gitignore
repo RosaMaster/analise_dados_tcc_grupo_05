@@ -2,7 +2,9 @@
 itens-prova-2023.csv
 microdados-enem-2023.csv
 
+
 tx_rend_municipios*
+unified_tx_rend_municipios.parquet
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

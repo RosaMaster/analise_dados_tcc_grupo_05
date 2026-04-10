@@ -41,7 +41,6 @@ def turn_xlsx_in_parquet(file):
         ).drop([
     
     # 1. IDENTIFICADORES NÃO SINTÁTICOS
-    # O CO_MUNICIPIO já resolve a localização. Nomes ocupam memória e geram erro em modelos.
     "NO_REGIAO",
     "SG_UF",
     "NO_CATEGORIA",
@@ -50,10 +49,6 @@ def turn_xlsx_in_parquet(file):
 
     # 2. TAXAS DE APROVAÇÃO (CAT 1)
     # Motivo: Aprovação = 100 - (Reprovação + Abandono). 
-    # Manter a aprovação junto com as outras cria redundância perfeita, o que quebra modelos de Regressão Linear.
-    "Ensino_Fundamental_de_8_e_9_anos_Total_1_CAT_FUN",
-    "Ensino_Fundamental_de_8_e_9_anos_Anos_Iniciais_1_CAT_FUN_AI",
-    "Ensino_Fundamental_de_8_e_9_anos_Anos_Finais_1_CAT_FUN_AF",
     "Ensino_Fundamental_de_8_e_9_anos_1º_Ano_1_CAT_FUN_01",
     "Ensino_Fundamental_de_8_e_9_anos_2º_Ano_1_CAT_FUN_02",
     "Ensino_Fundamental_de_8_e_9_anos_3º_Ano_1_CAT_FUN_03",
@@ -63,7 +58,6 @@ def turn_xlsx_in_parquet(file):
     "Ensino_Fundamental_de_8_e_9_anos_7º_Ano_1_CAT_FUN_07",
     "Ensino_Fundamental_de_8_e_9_anos_8º_Ano_1_CAT_FUN_08",
     "Ensino_Fundamental_de_8_e_9_anos_9º_Ano_1_CAT_FUN_09",
-    "Ensino_Médio_Total_1_CAT_MED",
     "Ensino_Médio_1ª_série_1_CAT_MED_01",
     "Ensino_Médio_2ª_série_1_CAT_MED_02",
     "Ensino_Médio_3ª_série_1_CAT_MED_03",
@@ -71,8 +65,6 @@ def turn_xlsx_in_parquet(file):
     "Ensino_Médio_Não-Seriado_1_CAT_MED_NS",
 
     # 3. SÉRIES ESPECÍFICAS DE REPROVAÇÃO (CAT 2)
-    # Motivo: Para uma análise municipal (macro), as taxas por série individual 
-    # costumam ter muitos ruídos. Use apenas os "TOTAIS" ou "ANOS FINAIS/INICIAIS".
     "Ensino_Fundamental_de_8_e_9_anos_1º_Ano_2_CAT_FUN_01",
     "Ensino_Fundamental_de_8_e_9_anos_2º_Ano_2_CAT_FUN_02",
     "Ensino_Fundamental_de_8_e_9_anos_3º_Ano_2_CAT_FUN_03",
@@ -87,15 +79,12 @@ def turn_xlsx_in_parquet(file):
     "Ensino_Médio_3ª_série_2_CAT_MED_03",
 
     # 4. COLUNAS COM ALTA TAXA DE VALORES NULOS (NULLS)
-    # No estado de SP, quase nenhum município utiliza 4ª série no Ensino Médio ou Ensino Não-Seriado.
     "Ensino_Médio_4ª_série_2_CAT_MED_04",
     "Ensino_Médio_Não-Seriado_2_CAT_MED_NS",
     "Ensino_Médio_4ª_série_3_CAT_MED_04",
     "Ensino_Médio_Não-Seriado_3_CAT_MED_NS",
 
     # 5. DETALHAMENTO EXCESSIVO DE ABANDONO (CAT 3)
-    # Se o seu objetivo é "Abandono no Fundamental", use a coluna TOTAL. 
-    # Manter as séries individuais pulveriza a variância do modelo.
     "Ensino_Fundamental_de_8_e_9_anos_1º_Ano_3_CAT_FUN_01",
     "Ensino_Fundamental_de_8_e_9_anos_2º_Ano_3_CAT_FUN_02",
     "Ensino_Fundamental_de_8_e_9_anos_3º_Ano_3_CAT_FUN_03",
@@ -118,11 +107,11 @@ def turn_xlsx_in_parquet(file):
     df.write_parquet(f"./{file_name}.parquet")
 
 xlsx_paths = [
-    "../Rendimentos_TCC/tx_rend_municipios_2020.xlsx",
-    "../Rendimentos_TCC/tx_rend_municipios_2021.xlsx",
-    "../Rendimentos_TCC/tx_rend_municipios_2022.xlsx",
-    "../Rendimentos_TCC/tx_rend_municipios_2023.xlsx",
-    "../Rendimentos_TCC/tx_rend_municipios_2024.xlsx"
+    "app/Rendimentos_TCC/tx_rend_municipios_2020.xlsx",
+    "app/Rendimentos_TCC/tx_rend_municipios_2021.xlsx",
+    "app/Rendimentos_TCC/tx_rend_municipios_2022.xlsx",
+    "app/Rendimentos_TCC/tx_rend_municipios_2023.xlsx",
+    "app/Rendimentos_TCC/tx_rend_municipios_2024.xlsx"
     ]
 
 
